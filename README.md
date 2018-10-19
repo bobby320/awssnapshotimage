@@ -7,4 +7,8 @@ To create a snapshot of volume
 
 #Running
 
-`pipenv run python snapshot/snapshot.py <command> <--project=PROJECT>`
+`pipenv run python snapshot/snapshot.py <command> <sub-command> <--project=PROJECT>`
+
+*command* is instances, volumes, and snapshots
+*sub-commands* is list, start, stop
+*project* is optional
