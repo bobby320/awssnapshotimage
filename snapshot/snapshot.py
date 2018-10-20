@@ -148,5 +148,20 @@ def start_instances(project):
             continue
     return
 
+@instances.command('reboot')
+@click.option('--project', default=None, help="only instances for project (tag Project:<name>)")
+def restart_instances(project):
+    "rebooting ec2 instances"
+    instances = filter_instances(project)
+
+    for i in instances:
+        print("rebooting {0}...".format(i.id))
+        try:
+            i.reboot()
+        except botocore.exceptions.ClientError as e:
+            print("Count not start {0}. ".format(i.id) + str(e))
+            continue
+    return
+
 if __name__ == '__main__':
     cli()
